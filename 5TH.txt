@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Monthsary</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .hidden { display: none; }
+    .btn {
+      background: gold;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #000;
+      font-weight: 600;
+    }
+    #envelope, #chocolateBox, #chocolates { text-align: center; }
+    img {
+      width: 250px;
+      cursor: pointer;
+    }
+    .choc-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      width: 80%;
+      margin: 0 auto;
+    }
+    .choc-item {
+      border: 2px solid gold;
+      padding: 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      background: #000;
+      color: gold;
+      text-align: center;
+    }
+    .msg {
+      font-size: 1.2rem;
+      padding: 20px;
+      color: #000;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes pop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+    .fade { animation: fadeIn 0.8s ease forwards; }
+    .pop { animation: pop 0.5s ease forwards; }
+  </style>
+</head>
+<body>
+  <!-- Envelope Page -->
+  <div id="envelope">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Envelope_font_awesome.svg" alt="Envelope" />
+    <br /><br />
+    <button class="btn" onclick="openEnvelope()">Open</button>
+  </div>
+
+  <!-- Chocolate Box Closed -->
+  <div id="chocolateBox" class="hidden">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Chocolate.svg" alt="Box" onclick="openBox()" />
+    <p>Click the box!</p>
+  </div>
+
+  <!-- Chocolate Grid -->
+  <div id="chocolates" class="hidden">
+    <h2>Pick a Chocolate</h2>
+    <div class="choc-grid">
+      <div class="choc-item" onclick="showMsg(0)">🍫1</div>
+      <div class="choc-item" onclick="showMsg(1)">🍫2</div>
+      <div class="choc-item" onclick="showMsg(2)">🍫3</div>
+      <div class="choc-item" onclick="showMsg(3)">🍫4</div>
+      <div class="choc-item" onclick="showMsg(4)">🍫5</div>
+    </div>
+  </div>
+
+  <!-- Message Screen -->
+  <div id="message" class="hidden">
+    <div class="msg" id="msgText"></div>
+    <button class="btn" onclick="backToChocs()">Back</button>
+  </div>
+
+  <script>
+    function openEnvelope() {
+      alert("Happy Monthsary!");
+      document.getElementById('envelope').classList.add('hidden');
+      document.getElementById('chocolateBox').classList.remove('hidden');
+    }
+
+    function openBox() {
+      document.getElementById('chocolateBox').classList.add('hidden');
+      document.getElementById('chocolates').classList.remove('hidden');
+    }
+
+    const messages = [
+      "I love you more every day.",
+      "Thank you for being my safe space.",
+      "You make my heart feel at home.",
+      "I'm blessed to have you.",
+      "Here's to many more months together."
+    ];
+
+    function showMsg(index) {
+      document.getElementById('chocolates').classList.add('hidden');
+      document.getElementById('message').classList.remove('hidden');
+      document.getElementById('msgText').innerText = messages[index];
+    }
+
+    function backToChocs() {
+      document.getElementById('message').classList.add('hidden');
+      document.getElementById('chocolates').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
